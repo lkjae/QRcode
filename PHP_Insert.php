@@ -11,10 +11,10 @@
         $phone=$_POST['phone'];
 	 $etc=$_POST['etc'];
         if(empty($name)){
-            $errMSG = "이름을 입력하세요.";
+            $errMSG = "제품명을 입력하세요.";
         }
-        else if(empty($country)){
-            $errMSG = "비밀번호를 입력하세요.";
+        else if(empty($quantity)){
+            $errMSG = "수량을 입력하세요.";
         }
         else if(empty($phone)){
             $errMSG = "폰번호를입력하세요.";
@@ -23,9 +23,9 @@
         {
             try{
                 // SQL문을 실행하여 데이터를 MySQL 서버의 qr 테이블에 저장합니다. 
-                $stmt = $con->prepare('INSERT INTO qr(제품명,수량, 가격, 기타) VALUES(:name, :country, :phone, :etc)');
+                $stmt = $con->prepare('INSERT INTO qr(제품명,수량, 가격, 기타) VALUES(:name, :quantity, :phone, :etc)');
                 $stmt->bindParam(':name', $name);
-                $stmt->bindParam(':country', $country);
+                $stmt->bindParam(':quantity', $quantity);
                 $stmt->bindParam(':phone', $phone);
 		  $stmt->bindParam(':etc', $etc);
                 if($stmt->execute())
@@ -54,7 +54,7 @@
        <body>
             <form action="<?php $_PHP_SELF ?>" method="POST">
                 제품명: <input type = "text" name = "name" />
-                수량: <input type = "text" name = "country" />
+                수량: <input type = "text" name = "quantity" />
                 가격: <input type = "text" name = "phone" />
 		기타: <input type = "text" name = "etc" />
                 <input type = "submit" name = "submit" />
