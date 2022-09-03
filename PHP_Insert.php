@@ -7,7 +7,7 @@
     {
         // 안드로이드 코드의 postParameters 변수에 적어준 이름을 가지고 값을 전달받습니다.
         $name=$_POST['name'];
-        $country=$_POST['country'];
+        $quantity=$_POST['quantity'];
         $phone=$_POST['phone'];
 	 $etc=$_POST['etc'];
         if(empty($name)){
